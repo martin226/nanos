@@ -6,6 +6,7 @@ from django.db import models
 class URLShorten(models.Model):
     url = models.URLField(max_length=255)
     short_url = models.CharField(max_length=8, unique=True)
+    analytics_id = models.CharField(max_length=8, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
