@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -29,14 +30,15 @@ def create_url(request):
 
 
 @api_view(["GET"])
-def resolve_url(request, short_url):
+def redirect_url(request, short_url):
+    short_url = short_url.split("/")[0]
     qs = URLShorten.objects.filter(short_url=short_url)
     if qs.count() != 1:
-        return Response({"error": "Short URL not found"}, status=404)
+        return redirect("/app")
     url_shorten = qs.first()
 
     if not url_shorten.is_active:
-        return Response({"error": "Short URL not found"}, status=404)
+        return redirect("/app")
 
     ip_address = get_client_ip(request)
     country_name = resolve_country_name(ip_address)
@@ -58,7 +60,7 @@ def resolve_url(request, short_url):
     url_shorten.views.create(
         ip=ip_address, country=country_name, referrer=referrer, device=device
     )
-    return Response({"url": url_shorten.url})
+    return redirect(url_shorten.url, permanent=True)
 
 
 @api_view(["GET"])
