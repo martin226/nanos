@@ -1,4 +1,7 @@
 export default {
+  router: {
+    base: '/app/',
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nanos',
@@ -40,8 +43,11 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    proxy: true,
+  },
+
+  proxy: {
+    ['!/app/**']: 'http://localhost:8000',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
