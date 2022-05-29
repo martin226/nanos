@@ -5,7 +5,7 @@ from .models import URLShorten
 
 
 def generate_id(k=6):
-    short_url = "".join(random.choices(string.ascii_lowercase + string.digits, k=k))
+    short_url = "".join(random.choices(string.ascii_letters + string.digits, k=k))
     if URLShorten.objects.filter(short_url=short_url).exists():
         return generate_id()
     return short_url
