@@ -60,7 +60,11 @@ def redirect_url(request, short_url):
     url_shorten.views.create(
         ip=ip_address, country=country_name, referrer=referrer, device=device
     )
-    return redirect(url_shorten.url, permanent=True)
+    response = redirect(url_shorten.url, permanent=True)
+
+    response["Cache-Control"] = "no-cache"
+
+    return response
 
 
 @api_view(["GET"])
