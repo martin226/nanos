@@ -26,9 +26,9 @@
       </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <WidgetViews :views="data.country_views" viewType="Country" />
-      <WidgetViews :views="data.referrer_views" viewType="Referrer" />
-      <WidgetViews :views="data.device_views" viewType="Device" />
+      <WidgetViews :views="data.country_views" view-type="Country" />
+      <WidgetViews :views="data.referrer_views" view-type="Referrer" />
+      <WidgetViews :views="data.device_views" view-type="Device" />
     </div>
   </div>
 </template>
