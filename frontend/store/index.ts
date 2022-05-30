@@ -27,4 +27,12 @@ export const actions: ActionTree<RootState, RootState> = {
       return null;
     }
   },
+  async getAnalytics({}, id) {
+    try {
+      const res = await this.$axios.$get('/api/stats/' + id);
+      return res;
+    } catch (e) {
+      return null;
+    }
+  },
 };
