@@ -79,16 +79,25 @@ def get_url_stats(request, analytics_id):
         url_shorten.views.values("country")
         .annotate(count=models.Count("country"))
         .order_by("-count")
+        .values("country", "count")
+        .annotate(key=models.F("country"))
+        .values("key", "count")
     )
     referrer_views = (
         url_shorten.views.values("referrer")
         .annotate(count=models.Count("referrer"))
         .order_by("-count")
+        .values("referrer", "count")
+        .annotate(key=models.F("referrer"))
+        .values("key", "count")
     )
     device_views = (
         url_shorten.views.values("device")
         .annotate(count=models.Count("device"))
         .order_by("-count")
+        .values("device", "count")
+        .annotate(key=models.F("device"))
+        .values("key", "count")
     )
     return Response(
         {
