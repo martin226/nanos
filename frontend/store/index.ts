@@ -14,6 +14,9 @@ export const mutations: MutationTree<RootState> = {
   addShortenHistory(state, shortenData) {
     state.shortenHistory.push(shortenData);
   },
+  clearShortenHistory(state) {
+    state.shortenHistory = [];
+  },
 };
 
 export const actions: ActionTree<RootState, RootState> = {
@@ -27,7 +30,7 @@ export const actions: ActionTree<RootState, RootState> = {
       return null;
     }
   },
-  async getAnalytics({}, id) {
+  async getAnalytics(_, id) {
     try {
       const res = await this.$axios.$get('/api/stats/' + id);
       return res;

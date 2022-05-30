@@ -1,7 +1,7 @@
 <template>
   <div class="bg-zinc-800 w-full rounded-xl p-4">
     <h3 class="text-xl font-extralight mb-2">Views by {{ viewType }}</h3>
-    <p class="italic text-zinc-300 text-sm" v-if="!views.length">
+    <p v-if="!views.length" class="italic text-zinc-300 text-sm">
       No data available
     </p>
     <ul class="rounded-lg">
