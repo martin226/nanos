@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div class="bg-zinc-800 w-full rounded-xl">
+    <WidgetHistory />
+  </div>
 </template>
 
 <script lang="ts">

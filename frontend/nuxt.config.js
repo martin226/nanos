@@ -1,4 +1,5 @@
 export default {
+  ssr: false,
   router: {
     base: '/app/',
   },
@@ -21,7 +22,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '~/plugins/vuex-persist' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -39,6 +40,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxt-clipboard',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -47,7 +49,7 @@ export default {
   },
 
   proxy: {
-    ['!/app/**']: 'http://localhost:8000',
+    '!/app/**': 'http://localhost:8000',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
