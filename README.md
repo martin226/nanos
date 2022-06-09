@@ -10,6 +10,18 @@
 
 > _tldr;_ nanos shortens any URL you want, preserving SEO value and providing you with detailed analytics so that you can track your link clicks.
 
+# Images
+
+<details>
+  <summary>Home Page</summary>
+  <img src="docs/home.png" />
+</details>
+
+<details>
+  <summary>Analytics Page</summary>
+  <img src="docs/analytics.png" />
+</details>
+
 # How it Works
 
 > Nuxt Frontend → Django Backend API → PostgreSQL DB → Nuxt Frontend
